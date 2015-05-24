@@ -1,0 +1,34 @@
+#!/usr/bin/env python2
+
+#import pynotify
+import sys
+import os
+import string
+
+def pynotify(urgency, timeout, image, title, message):
+  #low,normal,critical
+  print urgency
+  print timeout
+  print title
+  print message
+  print image
+  os.system("notify-send --urgency=%s --expire-time=%s --icon=%s \"%s\" \"%s\"" % (urgency, timeout, image, title, message))
+  
+
+if __name__ == '__main__':
+    #if not pynotify.init("cb-fortune"):
+    #    sys.exit(1)
+    if len(sys.argv)==1:
+        title = "Waldorf says,"
+        p = os.popen("fortune -s | sed 's/^[ \t]*//'|sed 's/[ \t]/ /'|sed 's/^A:/\\nA:/'|sed 's/^--/\\n--/'","r")
+        message = ""
+        while 1:
+            line = p.readline()
+            if not line: break
+            message = message + line
+        image = "/usr/share/pixmaps/waldorf.png"
+        n = pynotify("low", 10000, image, title, message)
+        #if not n.show():
+        #    print "Failed to send notification"
+        #    sys.exit(1)
+        sys.exit()

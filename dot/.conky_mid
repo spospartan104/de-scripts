@@ -1,0 +1,87 @@
+#avoid flickerw
+
+double_buffer yes
+
+
+
+#own window to run simultanious 2 or more conkys
+
+own_window yes
+
+own_window_transparent yes 
+#own_window_hints undecorated,below,above,sticky,skip_taskbar,skip_pager
+own_window_type desktop 
+own_window_class conky
+own_window_title conky 
+
+#borders
+
+draw_borders no
+
+#shades
+
+draw_shades no
+
+
+
+#position
+
+gap_x 0 
+
+gap_y 0 
+
+alignment bottom_middle
+
+
+
+#behaviour
+
+update_interval 1
+
+
+
+#colour
+
+default_color 777777 
+
+
+
+#default_shade_color 000000
+
+own_window_colour 303030
+
+
+
+#font
+
+use_xft yes
+
+#xftfont bauhaus:pixelsize=10
+xftfont AvantGarde LT medium:bold:pixelsize=8
+xftalpha 0.8
+
+
+#to prevent window from moving
+
+use_spacer none 
+
+minimum_size 1 
+maximum_width 1500
+
+
+#mpd
+
+mpd_host localhost
+
+mpd_port 6600
+
+
+
+
+#line 2 date,MEM,homespace,ExtrnlIP,2ndProcess,kernel,load min avg max
+
+#line 1 time,CPU,/space,InternalIP,Top Process,uptime,battery %+time
+TEXT
+${alignc}| ${time %H:%M:%S} | ${time %a %y-%m-%d} | ${execi 61 /home/spospartan104/dotde/getBatTimeRem.sh}${font} |
+${font xftfont AvantGarde LT heavy:bold:pixelsize=9} ${alignc} ${color 00CCAA}${execi 200 /home/spospartan104/dotde/getHostname.sh}${color} ${font}
+| Kernel: ${kernel} | UP: ${uptime} | 

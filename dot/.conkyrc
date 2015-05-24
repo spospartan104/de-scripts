@@ -1,0 +1,85 @@
+#avoid flicker
+
+double_buffer yes
+
+
+
+#own window to run simultanious 2 or more conkys
+
+own_window yes
+
+own_window_transparent yes 
+#own_window_hints undecorated,below,above,sticky,skip_taskbar,skip_pager
+own_window_type desktop 
+own_window_class conky
+own_window_title conky 
+
+#borders
+
+draw_borders no
+
+#shades
+
+draw_shades no
+
+
+
+#position
+
+gap_x 0 
+
+gap_y 0 
+
+alignment bottom_left 
+
+
+
+#behaviour
+
+update_interval 1
+
+
+
+#colour
+
+default_color ff0000 
+
+
+
+#default_shade_color 000000
+
+own_window_colour 303030
+
+
+
+#font
+
+use_xft yes
+
+#xftfont bauhaus:pixelsize=10
+xftfont AvantGarde LT medium:pixelsize=10
+xftalpha 0.8
+
+
+#to prevent window from moving
+
+use_spacer none 
+
+minimum_size 1 
+maximum_width 1300
+
+
+#mpd
+
+mpd_host localhost
+
+mpd_port 6600
+
+
+
+
+#line 2 date,MEM,homespace,ExtrnlIP,2ndProcess,kernel,load min avg max
+
+#line 1 time,CPU,/space,InternalIP,Top Process,uptime,battery %+time
+TEXT
+${time %H:%M:%S} | CPU: ${cpu}% |'/' ${fs_free /} / ${fs_size /} | Wifi: ${addr wlan0} Eth: ${addr eth0} | ${execi 60000 ./getHostname.sh} | "Uptime: "${execi 61 uptime | awk '{print substr($3,1,1)"d:"substr($5,1,2)"h:"substr($5,4,2)"m"}'} | ${battery_short}| ${time %a %y-%m-%d} | MEM: $memperc% |'/home' ${fs_free /home} / ${fs_size /home} | Public IP: ${execi 3600 wget -O - -o /dev/null automation.whatismyip.com/n09230945.asp} | Kernel: ${kernel} | ${execi 61 ./getBatTimeRem.sh} | 

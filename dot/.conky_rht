@@ -1,0 +1,83 @@
+#avoid flicker
+
+double_buffer yes
+
+
+
+#own window to run simultanious 2 or more conkys
+
+own_window yes
+
+own_window_transparent yes 
+#own_window_hints undecorated,below,above,sticky,skip_taskbar,skip_pager
+own_window_type desktop 
+own_window_class conky
+own_window_title conky 
+
+#borders
+
+draw_borders no
+
+#shades
+
+draw_shades no
+
+
+
+#position
+
+gap_x 0 
+
+gap_y 0 
+
+alignment bottom_right 
+
+
+
+#behaviour
+
+update_interval 1
+
+
+
+#colour
+
+default_color 00ffff 
+
+
+
+#default_shade_color 000000
+
+own_window_colour 303030
+
+
+
+#font
+
+use_xft yes
+
+#xftfont bauhaus:pixelsize=10
+xftfont AvantGarde LT medium::bold:pixelsize=8
+xftalpha 0.8
+
+
+#to prevent window from moving
+
+use_spacer none 
+
+minimum_size 1 
+maximum_width 1500
+
+
+#mpd
+
+mpd_host localhost
+
+mpd_port 6600
+
+
+TEXT
+${font xftfont AvantGarde LT heavy:bold:pixelsize=9}
+${alignc}|------------------------------------------------------------------|
+${alignc}${execi 5  cat ~/dotde/dot.quotes | shuf | head -n1 | sed 's/\\n/\n/g'}
+${alignc}|------------------------------------------------------------------|
